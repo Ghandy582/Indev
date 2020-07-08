@@ -6,13 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class MysqlSrvImpl {
+public class MysqlSrvImpl{
 
 	public PreparedStatement stmt = null;
-	public MysqlSrv var_MysqlSrv_daos;
-	protected MysqlSrvImpl(){
+	public static MysqlSrv var_MysqlSrv_daos;
+	
+	/**
+	 * Set instance
+	 * @param var_string_env
+	 */
+	public static void MysqlSrvImpl(String var_string_env){
 		try {
-			var_MysqlSrv_daos = MysqlSrv.F_getInstance("indev_dev");
+			var_MysqlSrv_daos = MysqlSrv.F_getInstance(var_string_env);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,4 +50,5 @@ public class MysqlSrvImpl {
 		}
 		return ps;
 	}
+
 }
