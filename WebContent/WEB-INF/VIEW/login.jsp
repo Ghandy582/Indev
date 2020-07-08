@@ -4,25 +4,43 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/login.css" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <title>Connexion</title>
 </head>
 <body>
 <div id="container">
             <!-- zone de connexion -->
             
-            <form action="verification.php" method="POST">
+            <form name="Form">
                 <h1>Connexion</h1>
                 
                 <label><b>Nom d'utilisateur</b></label>
-                <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
+                <input type="text" placeholder="Entrer le nom d'utilisateur" name="login" required>
 
                 <label><b>Mot de passe</b></label>
                 <input type="password" placeholder="Entrer le mot de passe" name="password" required>
 
-
-                <input type="submit" id='submit' value='VALIDER' >
+				<select name="choixbdd"> 
+				    <c:forEach var="item" items="${url}"> 
+				    <option>${item}</option> 
+				    </c:forEach> 
+				</select>
+                <input type="button" id='button' value='VALIDER' onclick="javascript:connexion();">
         
             </form>
         </div>
-      
+        <script>
+      function connexion(){
+            $.ajax({
+                  method: "POST",
+                  url: "${pageContext.request.contextPath}/login",
+                  data: {'action':'login','login':$("#login").val(), password:$("#password").val(), choixbdd:$("#choixbdd").val()},
+                  //Succès de la requete ajax et reponse correcte
+                  success : function(res){
+                     
+                  }
+            });
+        }
+      </script>
 </html>

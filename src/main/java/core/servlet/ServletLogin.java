@@ -36,8 +36,6 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MysqlSrv m = MysqlSrv.F_getInstance(VAR_STRING_URL_TEST);
-		m.F_getTest().tes();
 		List<String> var_list_url = new ArrayList<String>();
 		var_list_url.add(VAR_STRING_URL_TEST);
 		var_list_url.add(VAR_STRING_URL_PROJECT);
@@ -49,7 +47,29 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String action = request.getParameter("action");
+		System.out.println(action);
+		try {
+			switch (action) {
+				case "login": 
+					login(request, response);
+					break;
+				case "logout":
+					break;
+				default:
+					break;
+			}
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	private void login(HttpServletRequest req, HttpServletResponse res) {
+		String login = req.getParameter("login");
+		String pass = req.getParameter("password");
+		System.out.println(login);
+		System.out.println(pass);
+
 	}
 
 }
