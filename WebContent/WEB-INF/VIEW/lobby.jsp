@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html;" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:forEach  var="sub_view" items="${sub_views}">
+	<jsp:include page="${sub_view}"/> 
+</c:forEach>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +32,7 @@
 	            <th>Nom</th>
 	            <th>Etat</th>
 	            <th>Type</th>
-	            <th>Priorité</th>
+	            <th>PrioritÃ©</th>
 	            <th>Date ouverture</th>
 	            <th>Technicien</th>
 	            <th>Date cloture</th>
@@ -39,7 +42,7 @@
 	        <tr>
 	            <td>Ticket 1</td>
 	            <td>En cours</td>
-	            <td>Panne matériel</td>
+	            <td>Panne matÃ©riel</td>
 	            <td>normal</td>
 	            <td>08/07/2020</td>
 	            <td>Loulou le pou</td>
@@ -49,7 +52,7 @@
 	</table>
 	<br />
 	<button type="button">
-	    Créer un nouveau ticket
+	    CrÃ©er un nouveau ticket
 	</button>
 </div>
 <script>
