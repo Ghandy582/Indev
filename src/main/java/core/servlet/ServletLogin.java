@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
+import core.model.User;
 import core.utils.MysqlSrv;
 
 
@@ -47,10 +50,9 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
-		System.out.println(action);
+		String var_string_action = request.getParameter("action");
 		try {
-			switch (action) {
+			switch (var_string_action) {
 				case "login": 
 					login(request, response);
 					break;
@@ -65,11 +67,28 @@ public class ServletLogin extends HttpServlet {
 	}
 	
 	private void login(HttpServletRequest req, HttpServletResponse res) {
-		String login = req.getParameter("login");
-		String pass = req.getParameter("password");
-		System.out.println(login);
-		System.out.println(pass);
+		String var_string_login = req.getParameter("login");
+		String var_string_pass = req.getParameter("password");
+		String var_string_env = req.getParameter("choixbdd");
+		res.setContentType("application/json");
+		res.setCharacterEncoding("UTF-8");
+		try {
+			MysqlSrv var_MysqlSrv_instance = MysqlSrv.F_getInstance(var_string_env);
+			User var_user_u = var_MysqlSrv_instance.F_getUser().F_login(var_string_login, var_string_pass);
+			if (var_user_u != null) {
+				req.getSession().setAttribute(User.SESSION_ATTRIBUTE, var_user_u);
+				JSONObject result = new JSONObject()
+						.put("code", "1").put("message","");
+				res.getWriter().write(result.toString());
 
+			} else {
+				JSONObject result = new JSONObject()
+						.put("code", "-1").put("message","Erreur de connexion");
+				res.getWriter().write(result.toString());
+			}
+		} catch (Exception e) {
+			
+		}
 	}
 
 }
