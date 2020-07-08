@@ -4,14 +4,14 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/login.css" >
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Connexion</title>
 </head>
 <body>
 <div id="container">
             <!-- zone de connexion -->
             
-            <form action="verification.php" method="POST">
+            <form method="POST">
                 <h1>Connexion</h1>
                 
                 <label><b>Nom d'utilisateur</b></label>

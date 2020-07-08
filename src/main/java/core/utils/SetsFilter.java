@@ -19,7 +19,7 @@ import core.model.User;
 /**
  * Servlet Filter implementation class SetsFilter
  */
-@WebFilter(filterName="SetsFilter" , urlPatterns="/*")
+//@WebFilter(filterName="SetsFilter" , urlPatterns="/*")
 public class SetsFilter implements Filter {
 
 
