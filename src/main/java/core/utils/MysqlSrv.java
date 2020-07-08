@@ -9,6 +9,8 @@ import java.util.Properties;
 
 import lobby.model.Itest;
 import lobby.model.test;
+import user.model.IUser;
+import user.model.UserImpl;
 
 public class MysqlSrv {
 	// Flags for URL properties names in config file
@@ -66,7 +68,6 @@ public class MysqlSrv {
 			try(InputStream resourceStream = loader.getResourceAsStream("mysqlsrv.properties")) {
 			    props.load(resourceStream);
 			}
-			
 			String url = props.getProperty(type);
 			String login = props.getProperty("login");
 			String password = props.getProperty("password");
@@ -105,5 +106,9 @@ public class MysqlSrv {
 	
 	public Itest F_getTest() {
 		return new test();
+	}
+	
+	public IUser F_getUser() {
+		return new UserImpl();
 	}
 }

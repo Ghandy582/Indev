@@ -16,12 +16,12 @@
                 <h1>Connexion</h1>
                 
                 <label><b>Nom d'utilisateur</b></label>
-                <input type="text" placeholder="Entrer le nom d'utilisateur" name="login" required>
+                <input type="text" placeholder="Entrer le nom d'utilisateur" id="login" required>
 
                 <label><b>Mot de passe</b></label>
-                <input type="password" placeholder="Entrer le mot de passe" name="password" required>
+                <input type="password" placeholder="Entrer le mot de passe" id="password" required>
 
-				<select name="choixbdd"> 
+				<select id="choixbdd"> 
 				    <c:forEach var="item" items="${url}"> 
 				    <option>${item}</option> 
 				    </c:forEach> 
@@ -38,7 +38,11 @@
                   data: {'action':'login','login':$("#login").val(), password:$("#password").val(), choixbdd:$("#choixbdd").val()},
                   //Succès de la requete ajax et reponse correcte
                   success : function(res){
-                     
+                	  if(res["code"]==1){
+ 						 window.location.href  = "${pageContext.request.contextPath}/lobby";						
+ 					 }else{
+ 						 console.log(res["message"]); 
+ 					 }
                   }
             });
         }
