@@ -37,7 +37,7 @@ public class User {
 	/**
 	 * Role id
 	 */
-	private String role_id;
+	private int role_id;
 	
 	/**
 	 * Getters
@@ -75,7 +75,7 @@ public class User {
 	 * Getters
 	 * @return
 	 */
-	public String getRole_id() {
+	public int getRole_id() {
 		return role_id;
 	}
 	
@@ -90,7 +90,7 @@ public class User {
 	 * @param role_id
 	 */
 	public User(int user_id, String user_login, String user_password, String user_nom, String user_prenom,
-			String role_id) {
+			int role_id) {
 		super();
 		this.user_id = user_id;
 		this.user_login = user_login;
@@ -108,7 +108,7 @@ public class User {
 	 * @param user_prenom
 	 * @param role_id
 	 */
-	public User(String user_login, String user_password, String user_nom, String user_prenom, String role_id) {
+	public User(String user_login, String user_password, String user_nom, String user_prenom, int role_id) {
 		super();
 		this.user_login = user_login;
 		this.user_password = user_password;
