@@ -26,7 +26,7 @@ public class UserImpl extends MysqlSrvImpl implements IUser {
 								rs.getString("user_password"), 
 								rs.getString("user_nom"),
 								rs.getString("user_prenom"), 
-								rs.getString("role_id"));
+								rs.getInt("role_id"));
 			con.close();
 		} catch (SQLException e) {
 			
