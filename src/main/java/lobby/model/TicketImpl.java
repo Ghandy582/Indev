@@ -16,7 +16,7 @@ public class TicketImpl extends MysqlSrvImpl implements Iticket{
 			+ "Us.user_prenom, Us.user_nom, Ty.type_libelle, Et.etat_libelle, Us2.user_prenom as userMod_prenom, Us2.user_nom as userMod_nom, Pr.priorite_libelle  "
 			+ "FROM Ticket Ti "
 			+ "INNER JOIN User Us on Ti.user_id = Us.user_id "
-			+ "INNER JOIN User Us2 on Ti.user_id_modifier = Us.user_id "
+			+ "INNER JOIN User Us2 on Ti.user_id_modifier = Us2.user_id "
 			+ "INNER JOIN Type Ty on Ti.type_id = Ty.type_id "
 			+ "INNER JOIN Etat Et on Ti.etat_id = Et.etat_id "
 			+ "INNER JOIN Priorite Pr on Ti.priorite_id = Pr.priorite_id";
