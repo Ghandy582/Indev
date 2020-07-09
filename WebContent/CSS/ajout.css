@@ -2,13 +2,11 @@
     width:400px;
     margin:5px;
 }
-/* Bordered form */
+
 form {
     width:100%;
     padding: 0px;
 }
-
-/* Full-width inputs */
 input[type=text], input[type=date] {
     width: 100%;
     padding: 12px 20px;

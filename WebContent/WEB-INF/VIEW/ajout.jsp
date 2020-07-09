@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div id="container">
+<div id="container" style="display:none;">
 
     <form  method="POST">
         <h1>Ajouter un ticket</h1>

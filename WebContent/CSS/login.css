@@ -7,7 +7,6 @@ body{
     margin:0 auto;
     margin-top:10%;
 }
-/* Bordered form */
 form {
     width:100%;
     padding: 30px;
@@ -20,8 +19,6 @@ form {
     margin: 0 auto;
     padding-bottom: 10px;
 }
-
-/* Full-width inputs */
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -30,8 +27,6 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
-/* Set a style for all buttons */
 input[type=submit] {
     background-color: #53af57;
     color: white;
