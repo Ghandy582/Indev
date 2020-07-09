@@ -13,23 +13,23 @@
     <form  method="POST">
         <h1>Ajouter un ticket</h1>
 
-        <label><b>Nom de ticket</b></label>
+        <label><b>Nom de ticket :</b></label>
         <input type="text" placeholder="Entrez un nom de ticket" id="ticket_name" required>
 		<br>
-        <label><b>Description du ticket</b></label>
+        <label><b>Description du ticket :</b></label>
         <input type="text" placeholder="Entrez la description du ticket" id="ticket_description" required>
         <br>
-        <label><b>Type de demande</b></label>
+        <label><b>Type de demande :</b></label>
 		<select id="type"> 
-				   <c:forEach var="item" items="${url}"> 
-				   <option>${item}</option> 
+				   <c:forEach var="types" items="${types}"> 
+				   <option id="${ types.getType_id()}">${types.getType_libelle()}</option> 
 				   </c:forEach> 
 		</select>
 		<br>
-        <label><b>Priorité du ticket</b></label>
+        <label><b>Priorité du ticket :</b></label>
 		<select id="priorite"> 
-				   <c:forEach var="item" items="${url}"> 
-				   <option>${item}</option> 
+				   <c:forEach var="priorite" items="${priorite}"> 
+				   <option id="${ priorite.getPriorite_id()}">${priorite.getPriorite_libelle()}</option> 
 				   </c:forEach> 
 		</select>
        	<input type="button" id='button' value='VALIDER' onclick="javascript:ajouter();">
@@ -40,7 +40,7 @@
       function ajout(){
             $.ajax({
                   method: "POST",
-                  url: "${pageContext.request.contextPath}/login",
+                  url: "${pageContext.request.contextPath}/lobby",
                   data: {'action':'ajout','ticket_nom':$("#ticket_nom").val(), ticket_description:$("#ticket_description").val(), type:$("#type").val(), priorite:$("#priorite").val()},
                   
             });
