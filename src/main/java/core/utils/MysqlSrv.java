@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import lobby.model.Iticket;
+import lobby.model.Itype;
 import lobby.model.TicketImpl;
+import lobby.model.TypeImpl;
 import user.model.IUser;
 import user.model.UserImpl;
 
@@ -110,5 +112,9 @@ public class MysqlSrv {
 	
 	public IUser F_getUser() {
 		return new UserImpl();
+	}
+	
+	public Itype F_getType() {
+		return new TypeImpl();
 	}
 }

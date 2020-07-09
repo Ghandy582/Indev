@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import core.model.Ticket;
-import core.model.User;
+import core.beans.Ticket;
+import core.beans.Type;
+import core.beans.User;
 import core.utils.MysqlSrv;
 
 /**
@@ -38,7 +39,10 @@ public class ServletLobby extends HttpServlet {
 		User var_user_session = (User) request.getSession().getAttribute(User.SESSION_ATTRIBUTE);
 		MysqlSrv var_MysqlSrv_instance = MysqlSrv.F_getInstance(var_user_session.user_bdd);
 		List<Ticket> var_list_ticket = var_MysqlSrv_instance.F_getTicket().F_GetAllTicket();
+		List<Type> var_list_type = var_MysqlSrv_instance.F_getType().F_GetAllType();
+		/*Send data*/
 		request.setAttribute("tickets", var_list_ticket);
+		request.setAttribute("types", var_list_type);
 		request.setAttribute("sub_views",LIST_SUB_VIEW);
 		this.getServletContext().getRequestDispatcher( VAR_STRING_VIEW_DEFAULT ).forward( request, response );
 	}

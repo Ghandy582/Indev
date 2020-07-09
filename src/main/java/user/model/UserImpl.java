@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import core.model.User;
+import core.beans.User;
 import core.utils.MysqlSrvImpl;
 
 public class UserImpl extends MysqlSrvImpl implements IUser {

@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import core.model.User;
+import core.beans.User;
 
 /**
  * Servlet Filter implementation class SetsFilter

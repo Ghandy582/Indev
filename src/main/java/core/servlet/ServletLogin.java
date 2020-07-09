@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import core.model.User;
+import core.beans.User;
 import core.utils.MysqlSrv;
 
 

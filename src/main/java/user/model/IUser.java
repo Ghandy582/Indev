@@ -1,6 +1,6 @@
 package user.model;
 
-import core.model.User;
+import core.beans.User;
 
 public interface IUser {
 

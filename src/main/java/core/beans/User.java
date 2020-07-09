@@ -1,4 +1,4 @@
-package core.model;
+package core.beans;
 
 public class User {
 

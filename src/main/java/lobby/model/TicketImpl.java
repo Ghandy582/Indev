@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.model.Ticket;
+import core.beans.Ticket;
 import core.utils.MysqlSrvImpl;
 
 public class TicketImpl extends MysqlSrvImpl implements Iticket{

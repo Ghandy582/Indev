@@ -2,7 +2,7 @@ package lobby.model;
 
 import java.util.List;
 
-import core.model.Ticket;
+import core.beans.Ticket;
 
 public interface Iticket {
 	
