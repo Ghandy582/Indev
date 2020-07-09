@@ -42,7 +42,7 @@
  						 window.location.href  = "${pageContext.request.contextPath}/lobby";						
  					 }else{
  						 console.log(res["message"]); 
- 						$.toaster(res["message"], 'Your Title', 'danger');
+ 						$.toaster(res["message"]);
  					 }
                   }
             });

@@ -7,6 +7,7 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/bootstrap.css" >
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
@@ -34,18 +35,26 @@
 	            <th>Date ouverture</th>
 	            <th>Technicien</th>
 	            <th>Date cloture</th>
+	            <th>Actions</th>
 	        </tr>
 	    </thead>
 	    <tbody>
-	        <tr>
-	            <td>Ticket 1</td>
-	            <td>En cours</td>
-	            <td>Panne matériel</td>
-	            <td>normal</td>
-	            <td>08/07/2020</td>
-	            <td>Loulou le pou</td>
-	            <td> ---</td>
-	        </tr>
+	        <c:forEach items="${ tickets }" var="tickets" varStatus="boucle">
+	           <tr id="${ tickets.getTicket_id()}" >
+	            	<td>${ tickets.getTicket_nom() }</td>
+	            	<td >${ tickets.getEtat_id() }</td>
+	            	<td >${ tickets.getType_id() }</td>
+	            	<td >${ tickets.getPriorite_id() }</td>
+	 				<td >${ tickets.getTicket_date_ouverture() }</td>
+	            	<td >${ tickets.getUser_id_modifier() }</td>
+	            	<td >${ tickets.getTicket_date_cloture() }</td>
+	            	<td>
+		            	<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">remove_red_eye</i>
+		            	<i style="padding: 3px; cursor: pointer;" class="material-icons" onClick="">edit</i>
+		            	<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">delete_forever</i>
+	           		</td>
+           		</tr>
+      		</c:forEach>
 	    </tbody>
 	</table>
 	<br />
