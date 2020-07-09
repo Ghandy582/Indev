@@ -17,9 +17,43 @@ public class Posseder{
 	/**
 	 * Role id
 	 */
-	private String role_id;
-	
-	public Posseder() {
-		
+	private int role_id;
+
+	/**
+	 * Getters
+	 * @return
+	 */
+	public int getDroit_id() {
+		return droit_id;
 	}
+
+	/**
+	 * Getters
+	 * @return
+	 */
+	public int getRole_id() {
+		return role_id;
+	}
+
+	/**
+	 * Constructor
+	 * @param droit_id
+	 * @param role_id
+	 */
+	public Posseder(int droit_id, int role_id) {
+		super();
+		this.droit_id = droit_id;
+		this.role_id = role_id;
+	}
+
+	/**
+	 * Constructor
+	 * @param role_id
+	 */
+	public Posseder(int role_id) {
+		super();
+		this.role_id = role_id;
+	}
+	
+	
 }
