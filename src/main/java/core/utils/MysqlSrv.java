@@ -7,8 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import lobby.model.Ipriorite;
 import lobby.model.Iticket;
 import lobby.model.Itype;
+import lobby.model.PrioriteImpl;
 import lobby.model.TicketImpl;
 import lobby.model.TypeImpl;
 import user.model.IUser;
@@ -106,15 +108,36 @@ public class MysqlSrv {
 		return DriverManager.getConnection(var_string_url);
 	}
 	
+	/**
+	 * Get Interface
+	 * @return TicketImpl
+	 */
 	public Iticket F_getTicket() {
 		return new TicketImpl();
 	}
 	
+	/**
+	 * Get Interface
+	 * @return UserImpl
+	 */
 	public IUser F_getUser() {
 		return new UserImpl();
 	}
 	
+	/**
+	 * Get Interface
+	 * @return TypeImpl
+	 */
 	public Itype F_getType() {
 		return new TypeImpl();
 	}
+	
+	/**
+	 * Get Interface
+	 * @return PrioriteImpl
+	 */
+	public Ipriorite F_getPriorite() {
+		return new PrioriteImpl();
+	}
+	
 }

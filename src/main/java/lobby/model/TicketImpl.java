@@ -30,17 +30,17 @@ public class TicketImpl extends MysqlSrvImpl implements Iticket{
 			var_rs = stmt.executeQuery();
 			while(var_rs.next()) {
 				var_list_loaded.add(
-						new Ticket(
-								var_rs.getInt("ticket_id"), 
-								var_rs.getString("ticket_nom"), 
-								var_rs.getString("ticket_description"), 
-								var_rs.getString("ticket_date_ouverture"), 
-								var_rs.getString("ticket_date_cloture"), 
-								var_rs.getString("user_prenom") + var_rs.getString("user_nom"), 
-								var_rs.getString("type_libelle"), 
-								var_rs.getString("etat_libelle"), 
-								var_rs.getString("userMod_prenom") + var_rs.getString("userMod_nom"), 
-								var_rs.getString("priorite_libelle")));
+					new Ticket(
+						var_rs.getInt("ticket_id"), 
+						var_rs.getString("ticket_nom"), 
+						var_rs.getString("ticket_description"), 
+						var_rs.getString("ticket_date_ouverture"), 
+						var_rs.getString("ticket_date_cloture"), 
+						var_rs.getString("user_prenom") +" "+ var_rs.getString("user_nom"), 
+						var_rs.getString("type_libelle"), 
+						var_rs.getString("etat_libelle"), 
+						var_rs.getString("userMod_prenom") +" "+ var_rs.getString("userMod_nom"), 
+						var_rs.getString("priorite_libelle")));
 			}
 			con.close();
 
