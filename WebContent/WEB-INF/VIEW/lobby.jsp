@@ -61,23 +61,19 @@
 	<button id=ajouter>
 	    Créer un nouveau ticket
 	</button>
-	<button id=fermer>
-	    Fermer
-	</button>
+	
 </div>
 <script>
-$(document).ready( function () {
-    $('#tickets').DataTable();
-} );
+$(document).ready( function () 
+	{
+    	$('#tickets').DataTable();
+	} );
 
-document.querySelector("#ajouter").addEventListener("click", function()
-	    {
-	    document.querySelector("#container").style.display = "block";
-	    });
-	    document.querySelector("#fermer").addEventListener("click", function()
-	    {
-	    document.querySelector("#container").style.display = "none";
-	    });
+	document.querySelector("#ajouter").addEventListener("click", function()
+	{
+	   	document.querySelector("#container").style.display = "block";
+	});
+	    
 </script> 
 <c:forEach  var="sub_view" items="${sub_views}">
 	<jsp:include page="${sub_view}"/> 
