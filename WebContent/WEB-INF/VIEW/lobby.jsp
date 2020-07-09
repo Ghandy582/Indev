@@ -42,11 +42,11 @@
 	        <c:forEach items="${ tickets }" var="tickets" varStatus="boucle">
 	           <tr id="${ tickets.getTicket_id()}" >
 	            	<td>${ tickets.getTicket_nom() }</td>
-	            	<td >${ tickets.getEtat_id() }</td>
-	            	<td >${ tickets.getType_id() }</td>
-	            	<td >${ tickets.getPriorite_id() }</td>
+	            	<td >${ tickets.getVar_string_etat() }</td>
+	            	<td >${ tickets.getVar_string_type() }</td>
+	            	<td >${ tickets.getVar_string_priorite() }</td>
 	 				<td >${ tickets.getTicket_date_ouverture() }</td>
-	            	<td >${ tickets.getUser_id_modifier() }</td>
+	            	<td >${ tickets.getVar_string_userModifier() }</td>
 	            	<td >${ tickets.getTicket_date_cloture() }</td>
 	            	<td>
 		            	<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">remove_red_eye</i>
