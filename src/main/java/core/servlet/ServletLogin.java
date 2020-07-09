@@ -76,6 +76,7 @@ public class ServletLogin extends HttpServlet {
 		try {
 			MysqlSrv var_MysqlSrv_instance = MysqlSrv.F_getInstance(var_string_env);
 			var_user_u = var_MysqlSrv_instance.F_getUser().F_login(var_string_login, var_string_pass, var_string_env);
+			var_user_u.user_bdd = var_string_env;
 			if (var_user_u != null) {
 				req.getSession().setAttribute(User.SESSION_ATTRIBUTE, var_user_u);
 				JSONObject result = new JSONObject()

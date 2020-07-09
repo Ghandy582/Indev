@@ -7,8 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import lobby.model.Itest;
-import lobby.model.test;
+import lobby.model.Iticket;
+import lobby.model.TicketImpl;
 import user.model.IUser;
 import user.model.UserImpl;
 
@@ -104,8 +104,8 @@ public class MysqlSrv {
 		return DriverManager.getConnection(var_string_url);
 	}
 	
-	public Itest F_getTest() {
-		return new test();
+	public Iticket F_getTicket() {
+		return new TicketImpl();
 	}
 	
 	public IUser F_getUser() {

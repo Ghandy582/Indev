@@ -41,31 +41,31 @@ public class Ticket {
 	/**
 	 * User id
 	 */
-	private String user_id;
+	private int user_id;
 	
 	
 	/**
 	 * type_id
 	 */
-	private String type_id;
+	private int type_id;
 	
 	
 	/**
 	 * etat_id
 	 */
-	private String etat_id;
+	private int etat_id;
 	
 	
 	/**
 	 * user_id_modifier
 	 */
-	private String user_id_modifier;
+	private int user_id_modifier;
 	
 	
 	/**
 	 * priorite_id
 	 */
-	private String priorite_id;
+	private int priorite_id;
 	
 	
 	/**
@@ -112,7 +112,7 @@ public class Ticket {
 	 * Getters
 	 * @return
 	 */
-	public String getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
 	
@@ -120,7 +120,7 @@ public class Ticket {
 	 * Getters
 	 * @return
 	 */
-	public String getType_id() {
+	public int getType_id() {
 		return type_id;
 	}
 
@@ -129,14 +129,14 @@ public class Ticket {
 	 * Getters
 	 * @return
 	 */
-	public String getEtat_id() {
+	public int getEtat_id() {
 		return etat_id;
 	}
 	/**
 	 * Getters
 	 * @return
 	 */
-	public String getUser_id_modifier() {
+	public int getUser_id_modifier() {
 		return user_id_modifier;
 	}
 	
@@ -144,7 +144,7 @@ public class Ticket {
 	 * Getters
 	 * @return
 	 */
-	public String getPriorite_id() {
+	public int getPriorite_id() {
 		return priorite_id;
 	}
 
@@ -164,8 +164,8 @@ public class Ticket {
 	 */
 	
 	public Ticket(int ticket_id, String ticket_nom, String ticket_description, String ticket_date_ouverture,
-			String ticket_date_cloture, String user_id, String type_id, String etat_id, String user_id_modifier,
-			String priorite_id) {
+			String ticket_date_cloture, int user_id, int type_id, int etat_id, int user_id_modifier,
+			int priorite_id) {
 		super();
 		this.ticket_id = ticket_id;
 		this.ticket_nom = ticket_nom;

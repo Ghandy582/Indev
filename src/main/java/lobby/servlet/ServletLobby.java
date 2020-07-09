@@ -1,11 +1,17 @@
 package lobby.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import core.model.Ticket;
+import core.model.User;
+import core.utils.MysqlSrv;
 
 /**
  * Servlet implementation class ServletLobby
@@ -28,8 +34,11 @@ public class ServletLobby extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		/*Get user session*/
+		User var_user_session = (User) request.getSession().getAttribute(User.SESSION_ATTRIBUTE);
+		MysqlSrv var_MysqlSrv_instance = MysqlSrv.F_getInstance(var_user_session.user_bdd);
+		List<Ticket> var_list_ticket = var_MysqlSrv_instance.F_getTicket().F_GetAllTicket();
+		request.setAttribute("tickets", var_list_ticket);
 		request.setAttribute("sub_views",LIST_SUB_VIEW);
 		this.getServletContext().getRequestDispatcher( VAR_STRING_VIEW_DEFAULT ).forward( request, response );
 	}

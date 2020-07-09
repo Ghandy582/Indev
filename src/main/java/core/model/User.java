@@ -9,6 +9,7 @@ public class User {
 
 	public static final String SESSION_ATTRIBUTE = "USER";
 
+	public String user_bdd;
 	/**
 	 * User Id
 	 */
