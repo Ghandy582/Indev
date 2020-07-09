@@ -15,6 +15,7 @@
 </head>
 <body>
 <h1>Gestion des tickets</h1>
+<h3>Connecté en tant que : <span style="color:#FF0000;">${ USER.getUser_prenom()} ${ USER.getUser_nom()}</span></h3>
 <div class="panel-body" style="display: block;padding: 5px;min-height: 260px;">
 <div class="row">
   <div class="col-sm">
