@@ -1,6 +1,7 @@
 package core.beans;
 
 public class Ticket {
+
 	/**
 	 * Static ticket attribute
 	 */
@@ -39,35 +40,35 @@ public class Ticket {
 		
 
 	/**
-	 * User id
+	 * User
 	 */
-	private int user_id;
+	private String var_string_user;
 	
 	
 	/**
-	 * type_id
+	 * Type
 	 */
-	private int type_id;
+	private String var_string_type;
 	
 	
 	/**
-	 * etat_id
+	 * Etat
 	 */
-	private int etat_id;
+	private String var_string_etat;
 	
 	
 	/**
-	 * user_id_modifier
+	 * User modifier
 	 */
-	private int user_id_modifier;
+	private String var_string_userModifier;
 	
 	
 	/**
-	 * priorite_id
+	 * Priorite
 	 */
-	private int priorite_id;
+	private String var_string_priorite;
 	
-	
+
 	/**
 	 * Getters
 	 * @return
@@ -112,72 +113,69 @@ public class Ticket {
 	 * Getters
 	 * @return
 	 */
-	public int getUser_id() {
-		return user_id;
-	}
-	
-	/**
-	 * Getters
-	 * @return
-	 */
-	public int getType_id() {
-		return type_id;
+	public String getVar_string_user() {
+		return var_string_user;
 	}
 
-	
 	/**
 	 * Getters
 	 * @return
 	 */
-	public int getEtat_id() {
-		return etat_id;
-	}
-	/**
-	 * Getters
-	 * @return
-	 */
-	public int getUser_id_modifier() {
-		return user_id_modifier;
-	}
-	
-	/**
-	 * Getters
-	 * @return
-	 */
-	public int getPriorite_id() {
-		return priorite_id;
+	public String getVar_string_type() {
+		return var_string_type;
 	}
 
-	
 	/**
-	 * 
+	 * Getters
+	 * @return
+	 */
+	public String getVar_string_etat() {
+		return var_string_etat;
+	}
+
+	/**
+	 * Getters
+	 * @return
+	 */
+	public String getVar_string_userModifier() {
+		return var_string_userModifier;
+	}
+
+	/**
+	 * Getters
+	 * @return
+	 */
+	public String getVar_string_priorite() {
+		return var_string_priorite;
+	}
+
+	/**
+	 * Constructor
 	 * @param ticket_id
 	 * @param ticket_nom
 	 * @param ticket_description
 	 * @param ticket_date_ouverture
 	 * @param ticket_date_cloture
-	 * @param user_id
-	 * @param type_id
-	 * @param etat_id
-	 * @param user_id_modifier
-	 * @param priorite_id
+	 * @param var_string_user
+	 * @param var_string_type
+	 * @param var_string_etat
+	 * @param var_string_userModifier
+	 * @param var_string_priorite
 	 */
-	
 	public Ticket(int ticket_id, String ticket_nom, String ticket_description, String ticket_date_ouverture,
-			String ticket_date_cloture, int user_id, int type_id, int etat_id, int user_id_modifier,
-			int priorite_id) {
+			String ticket_date_cloture, String var_string_user, String var_string_type, String var_string_etat,
+			String var_string_userModifier, String var_string_priorite) {
 		super();
 		this.ticket_id = ticket_id;
 		this.ticket_nom = ticket_nom;
 		this.ticket_description = ticket_description;
 		this.ticket_date_ouverture = ticket_date_ouverture;
 		this.ticket_date_cloture = ticket_date_cloture;
-		this.user_id = user_id;
-		this.type_id = type_id;
-		this.etat_id = etat_id;
-		this.user_id_modifier = user_id_modifier;
-		this.priorite_id = priorite_id;
+		this.var_string_user = var_string_user;
+		this.var_string_type = var_string_type;
+		this.var_string_etat = var_string_etat;
+		this.var_string_userModifier = var_string_userModifier;
+		this.var_string_priorite = var_string_priorite;
 	}
-	
 	
 }
