@@ -38,13 +38,22 @@
         </div>
         <script>
       function ajout(){
-    			    document.querySelector("#container").style.display = "none";
+    			    
             $.ajax({
                   method: "POST",
                   url: "${pageContext.request.contextPath}/lobby",
-                  data: {'action':'ajout','ticket_name':$("#ticket_name").val(), 'ticket_description':$("#ticket_description").val(), 'types':$("#types").id(), 'priorites':$("#priorites").id()},
+                  data: {'action':'ajout','ticket_name':$("#ticket_name").val(), 'ticket_description':$("#ticket_description").val(), 'types':$("#type option:selected").attr('id'), 'priorites':$("#priorite option:selected").attr('id')},
                   
+                  success : function(data){
+                	  if(data.Erreurs == undefined){
+                		  document.querySelector("#container").style.display = "none";
+ 					 }else{
+ 						 console.log(res["message"]); 
+ 					
+ 					 }
+                  }
             });
+            
         }
       </script>
 </body>
