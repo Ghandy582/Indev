@@ -32,8 +32,9 @@
 	            <th>Etat</th>
 	            <th>Type</th>
 	            <th>Priorité</th>
-	            <th>Date ouverture</th>
 	            <th>Technicien</th>
+	            <th>Date ouverture</th>
+	            <th>Créateur</th>
 	            <th>Date cloture</th>
 	            <th>Actions</th>
 	        </tr>
@@ -44,9 +45,10 @@
 	            	<td>${ tickets.getTicket_nom() }</td>
 	            	<td >${ tickets.getVar_string_etat() }</td>
 	            	<td >${ tickets.getVar_string_type() }</td>
-	            	<td >${ tickets.getVar_string_priorite() }</td>
+	            	<td >${ tickets.getVar_string_priorite() }</td>	 				
+	 				<td >${ tickets.getVar_string_userModifier() }</td>
 	 				<td >${ tickets.getTicket_date_ouverture() }</td>
-	            	<td >${ tickets.getVar_string_userModifier() }</td>
+	            	<td >${ tickets.getVar_string_user() }</td>
 	            	<td >${ tickets.getTicket_date_cloture() }</td>
 	            	<td>
 		            	<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">remove_red_eye</i>
