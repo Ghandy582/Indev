@@ -39,6 +39,7 @@ public class ServletLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*List url BDD*/
 		List<String> var_list_url = new ArrayList<String>();
 		var_list_url.add(VAR_STRING_URL_TEST);
 		var_list_url.add(VAR_STRING_URL_PROJECT);
