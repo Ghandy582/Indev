@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/login.css" >
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<c:url value="/JS/jquery.toaster.js"/>"></script>
-<title>Connexion</title>
+<title>Connexion Test</title>
 </head>
 <body>
 <div id="container">
