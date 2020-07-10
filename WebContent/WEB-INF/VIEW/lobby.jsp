@@ -88,17 +88,17 @@
 	    	
 
 	function deconnexion(){
-   		$.ajax({
-          method: "POST",
-          url: "${pageContext.request.contextPath}/login",
-          data: {'action':'logout'},
-          success : function(res){
-        	  if(res["code"]==1){
-					 window.location.href  = "${pageContext.request.contextPath}/login";						
-				}	
-          }
-        });
-    }
+        $.ajax({
+       method: "POST",
+       url: "${pageContext.request.contextPath}/login",
+       data: {'action':'logout'},
+       success : function(res){
+           setTimeout(function(){
+               window.location.reload();
+           },100);
+       }
+     });
+ 	}
 	
 	function supprimer(id){
 		 var ticket = $('#' + id + ' td.tdNomTicket').text();
