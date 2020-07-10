@@ -8,8 +8,10 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/bootstrap.css" >
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
 <title>Gestion des tickets</title>
 </head>
@@ -44,7 +46,7 @@
 	    <tbody>
 	        <c:forEach items="${ tickets }" var="tickets" varStatus="boucle">
 	           <tr id="${ tickets.getTicket_id()}" >
-	            	<td>${ tickets.getTicket_nom() }</td>
+	            	<td class="tdNomTicket">${ tickets.getTicket_nom() }</td>
 	            	<td >${ tickets.getVar_string_etat() }</td>
 	            	<td >${ tickets.getVar_string_type() }</td>
 	            	<td >${ tickets.getVar_string_priorite() }</td>	 				
@@ -59,7 +61,7 @@
 		            			<i style="padding: 3px; cursor: pointer;" class="material-icons" onClick="">edit</i>
 		            		</c:if>
 		            		<c:if test="${right.getDroit_libelle().equals('suppression')}">
-		            			<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">delete_forever</i>
+		            			<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="supprimer(${ tickets.getTicket_id()})">delete_forever</i>
 		            		</c:if>
 		            	</c:forEach>
 	           		</td>
@@ -92,11 +94,62 @@
           data: {'action':'logout'},
           success : function(res){
         	  if(res["code"]==1){
-        		  window.location.href = window.location.href;			
+					 window.location.href  = "${pageContext.request.contextPath}/login";						
 				}	
           }
         });
     }
+	
+	function supprimer(id){
+		 var ticket = $('#' + id + ' td.tdNomTicket').text();
+			$.confirm({
+			    title: 'Confirmation suppression',
+			    content: 'Confirmez vous la suppression du ticket suivant : '+ticket+ ' ?',
+			    animation: 'zoom',
+			    closeAnimation: 'scale',
+			    closeIcon: true,
+			    theme: 'light',
+			    buttons: {
+			    	Annuler: {
+			    		action : function () {
+			        	
+			        },
+			        btnClass : 'btn-annuler'
+			        },
+			        Confirmer:{
+			        	action : function (){
+			        		$.ajax({
+			  				  method: "POST",
+			  				  url: "${pageContext.request.contextPath}/lobby",				  
+			  				  data: {'id_ticket':id,
+			  					  'fonction':"supprimer"
+			  				  },
+			  				  //Succ�s de la requete ajax et reponse correcte
+			  				  success : function(data){
+			  					  //si aucune erreur
+			  					  if(data.Erreurs === undefined ){
+			  			               // window.location.href  = "${pageContext.request.contextPath}/lobby";
+			  					  }
+			  					  else{
+			  						  //on affiches les erreurs
+			  						  if(!(data.Erreurs.supprimer === undefined )){
+			  							  callErreur(data.Erreurs.supprimer);
+			  						  }
+			  					  
+			  					  }	   					
+			  				  },
+			  				  error : function(){
+			  					  callErreur("Une erreur est survenue pendant la tentative de suppression.");
+			  			      }
+			  			});
+		        		},
+			        btnClass: 'btn-primary'
+				       }
+				       
+			    }
+			});
+		
+	}
 </script>
 <c:forEach  var="sub_view" items="${sub_views}">
 	<jsp:include page="${sub_view}"/> 
