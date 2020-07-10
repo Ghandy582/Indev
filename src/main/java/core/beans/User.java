@@ -1,5 +1,7 @@
 package core.beans;
 
+import java.util.List;
+
 public class User {
 
 	/**
@@ -41,12 +43,26 @@ public class User {
 	private int role_id;
 	
 	/**
+	 * Right list
+	 */
+	private List<Droit> var_list_right;
+	
+	/**
+	 * Getters
+	 * @return
+	 */
+	public int getUser_id() {
+		return user_id;
+	}
+	
+	/**
 	 * Getters
 	 * @return
 	 */
 	public String getUser_login() {
 		return user_login;
 	}
+
 
 	/**
 	 * Getters
@@ -79,7 +95,22 @@ public class User {
 	public int getRole_id() {
 		return role_id;
 	}
-	
+
+	/**
+	 * Getters
+	 * @return List<Droit>
+	 */
+	public List<Droit> getVar_list_right() {
+		return var_list_right;
+	}
+
+	/**
+	 * Setters
+	 * @param var_list_right
+	 */
+	public void setVar_list_right(List<Droit> var_list_right) {
+		this.var_list_right = var_list_right;
+	}
 	
 	/**
 	 * Constructor
@@ -129,11 +160,4 @@ public class User {
 		this.user_password = user_password;
 	}
 
-	/**
-	 * Getters
-	 * @return
-	 */
-	public int getUser_id() {
-		return user_id;
-	}
 }

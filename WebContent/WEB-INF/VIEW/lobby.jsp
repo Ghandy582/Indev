@@ -50,8 +50,14 @@
 	            	<td >${ tickets.getTicket_date_cloture() }</td>
 	            	<td>
 		            	<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">remove_red_eye</i>
-		            	<i style="padding: 3px; cursor: pointer;" class="material-icons" onClick="">edit</i>
-		            	<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">delete_forever</i>
+		            	<c:forEach  var="right" items="${USER.getVar_list_right()}">
+		            		<c:if test="${right.getDroit_libelle().equals('modification')}">
+		            			<i style="padding: 3px; cursor: pointer;" class="material-icons" onClick="">edit</i>
+		            		</c:if>
+		            		<c:if test="${right.getDroit_libelle().equals('suppression')}">
+		            			<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">delete_forever</i>
+		            		</c:if>
+		            	</c:forEach>
 	           		</td>
            		</tr>
       		</c:forEach>
