@@ -71,6 +71,7 @@ public class ServletLobby extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String var_string_action = request.getParameter("action");
+		/*Post selector*/
 		try {
 			switch (var_string_action) {
 				case "ajout": 
