@@ -92,7 +92,7 @@
           data: {'action':'logout'},
           success : function(res){
         	  if(res["code"]==1){
-					 window.location.href  = "${pageContext.request.contextPath}/login";						
+        		  window.location.href = window.location.href;			
 				}	
           }
         });
