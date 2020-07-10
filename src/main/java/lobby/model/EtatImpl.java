@@ -6,32 +6,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.beans.Type;
+import core.beans.Etat;
 import core.utils.MysqlSrvImpl;
 
-public class TypeImpl extends MysqlSrvImpl implements Itype{
-	
+public class EtatImpl extends MysqlSrvImpl implements Ietat{
 	private Connection con = null;
-	private static final String VAR_STRING_QUERY_ALL = "SELECT * FROM Type ";
+	private static final String VAR_STRING_QUERY_ALL = "SELECT * FROM Etat ";
 	
-	public List<Type> F_GetAllType(){
+	public List<Etat> F_GetAllEtat(){
 		/*Variables*/
-		List<Type> var_list_type = new ArrayList<>();
+		List<Etat> var_list_etat = new ArrayList<>();
 		ResultSet var_rs = null;
 		try {
 			/*Connection SQL*/
 			con = var_MysqlSrv_daos.getConnection();
-			/*Request Type*/
+			/*Request Etat*/
 			stmt = buildRequest(con,VAR_STRING_QUERY_ALL);
 			var_rs = stmt.executeQuery();
 			while(var_rs.next()) {
-				var_list_type.add(new Type(var_rs.getInt("type_id"), var_rs.getString("type_libelle")));
+				var_list_etat.add(new Etat(var_rs.getInt("etat_id"), var_rs.getString("etat_libelle")));
 			}
 		}
 		catch (SQLException e) {
 			System.out.println(e);
 		}
-		return var_list_type;
+		return var_list_etat;
 	}
-	
 }

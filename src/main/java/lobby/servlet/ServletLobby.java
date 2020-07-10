@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import core.beans.Etat;
 import core.beans.Priorite;
 import core.beans.Ticket;
 import core.beans.Type;
@@ -55,6 +56,11 @@ public class ServletLobby extends HttpServlet {
 		List<Priorite> var_list_priorite = var_MysqlSrv_instance.F_getPriorite().F_GetAllPriorite();
 		/*Send data*/
 		request.setAttribute("priorites", var_list_priorite);
+		
+		/*Get all etat*/
+		List<Etat> var_list_etat = var_MysqlSrv_instance.F_getEtat().F_GetAllEtat();
+		/*Send data*/
+		request.setAttribute("etats", var_list_etat);
 		
 		request.setAttribute("sub_views",LIST_SUB_VIEW);
 		this.getServletContext().getRequestDispatcher( VAR_STRING_VIEW_DEFAULT ).forward( request, response );

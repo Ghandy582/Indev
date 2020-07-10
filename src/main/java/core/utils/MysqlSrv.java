@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import lobby.model.EtatImpl;
+import lobby.model.Ietat;
 import lobby.model.Ipriorite;
 import lobby.model.Iticket;
 import lobby.model.Itype;
@@ -138,6 +140,14 @@ public class MysqlSrv {
 	 */
 	public Ipriorite F_getPriorite() {
 		return new PrioriteImpl();
+	}
+	
+	/**
+	 * Get Interface
+	 * @return EtatImpl
+	 */
+	public Ietat F_getEtat() {
+		return new EtatImpl();
 	}
 	
 }
