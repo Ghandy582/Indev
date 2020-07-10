@@ -28,22 +28,32 @@
 		<br>
         <label><b>Priorité du ticket :</b></label>
 		<select id="priorite"> 
-				   <c:forEach var="priorite" items="${priorite}"> 
-				   <option id="${ priorite.getPriorite_id()}">${priorite.getPriorite_libelle()}</option> 
+				   <c:forEach var="priorites" items="${priorites}"> 
+				   <option id="${ priorites.getPriorite_id()}">${priorites.getPriorite_libelle()}</option> 
 				   </c:forEach> 
 		</select>
-       	<input type="button" id='button' value='VALIDER' onclick="javascript:ajouter();">
-        
+       	<input type="button" id='valider' value='Valider' onclick="javascript:ajout();">
+       
             </form>
         </div>
         <script>
       function ajout(){
+    			    
             $.ajax({
                   method: "POST",
                   url: "${pageContext.request.contextPath}/lobby",
-                  data: {'action':'ajout','ticket_nom':$("#ticket_nom").val(), ticket_description:$("#ticket_description").val(), type:$("#type").val(), priorite:$("#priorite").val()},
+                  data: {'action':'ajout','ticket_name':$("#ticket_name").val(), 'ticket_description':$("#ticket_description").val(), 'types':$("#type option:selected").attr('id'), 'priorites':$("#priorite option:selected").attr('id')},
                   
+                  success : function(data){
+                	  if(data.Erreurs == undefined){
+                		  document.querySelector("#container").style.display = "none";
+ 					 }else{
+ 						 console.log(res["message"]); 
+ 					
+ 					 }
+                  }
             });
+            
         }
       </script>
 </body>

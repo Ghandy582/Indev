@@ -15,6 +15,7 @@
 </head>
 <body>
 <h1>Gestion des tickets</h1>
+<h3>Connecté en tant que : <span style="color:#FF0000;">${ USER.getUser_prenom()} ${ USER.getUser_nom()}</span></h3>
 <div class="panel-body" style="display: block;padding: 5px;min-height: 260px;">
 <div class="row">
   <div class="col-sm">
@@ -32,8 +33,9 @@
 	            <th>Etat</th>
 	            <th>Type</th>
 	            <th>Priorité</th>
-	            <th>Date ouverture</th>
 	            <th>Technicien</th>
+	            <th>Date ouverture</th>
+	            <th>Créateur</th>
 	            <th>Date cloture</th>
 	            <th>Actions</th>
 	        </tr>
@@ -44,9 +46,10 @@
 	            	<td>${ tickets.getTicket_nom() }</td>
 	            	<td >${ tickets.getVar_string_etat() }</td>
 	            	<td >${ tickets.getVar_string_type() }</td>
-	            	<td >${ tickets.getVar_string_priorite() }</td>
+	            	<td >${ tickets.getVar_string_priorite() }</td>	 				
+	 				<td >${ tickets.getVar_string_userModifier() }</td>
 	 				<td >${ tickets.getTicket_date_ouverture() }</td>
-	            	<td >${ tickets.getVar_string_userModifier() }</td>
+	            	<td >${ tickets.getVar_string_user() }</td>
 	            	<td >${ tickets.getTicket_date_cloture() }</td>
 	            	<td>
 		            	<i style="padding: 3px; cursor: pointer;" class=" material-icons" onclick="">remove_red_eye</i>
@@ -67,23 +70,19 @@
 	<button id=ajouter>
 	    Créer un nouveau ticket
 	</button>
-	<button id=fermer>
-	    Fermer
-	</button>
+	
 </div>
 <script>
-$(document).ready( function () {
-    $('#tickets').DataTable();
-} );
+$(document).ready( function () 
+	{
+    	$('#tickets').DataTable();
+	} );
 
-document.querySelector("#ajouter").addEventListener("click", function()
-	    {
-	    document.querySelector("#container").style.display = "block";
-	    });
-	    document.querySelector("#fermer").addEventListener("click", function()
-	    {
-	    document.querySelector("#container").style.display = "none";
-	    });
+	document.querySelector("#ajouter").addEventListener("click", function()
+	{
+	   	document.querySelector("#container").style.display = "block";
+	});
+	    
 </script> 
 <c:forEach  var="sub_view" items="${sub_views}">
 	<jsp:include page="${sub_view}"/> 
