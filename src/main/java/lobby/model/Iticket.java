@@ -15,11 +15,17 @@ public interface Iticket {
 	
 	/**
 	 * Insert ticket
-	 * @param user 
-	 * @param String var_string_priorites 
-	 * @param String var_string_types 
-	 * @param Int var_int_description 
-	 * @param Int var_int_name 
+	 * @param var_string_name
+	 * @param var_string_description
+	 * @param var_int_types
+	 * @param var_int_priorites
+	 * @param user
 	 */
-	public void F_AddTicket(String var_int_name, String var_int_description, int var_string_types, int var_string_priorites, User user);
+	public void F_AddTicket(String var_string_name, String var_string_description, int var_int_types, int var_int_priorites, User user);
+
+	/**
+	 * Delete ticket
+	 * @param String var_int_name
+	 */
+	public void F_DeleteTicket(int var_int_id);
 }

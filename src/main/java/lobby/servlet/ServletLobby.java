@@ -70,6 +70,9 @@ public class ServletLobby extends HttpServlet {
 				case "ajout": 
 					F_add(request, response);
 					break;
+				case "supprimer": 
+					F_delete(request, response);
+					break;
 				default:
 					break;
 			}
@@ -77,8 +80,39 @@ public class ServletLobby extends HttpServlet {
 			
 		}
 	}
-	
+	/**
+	 * Post delete ticket
+	 * @param req
+	 * @param res
+	 * @throws IOException 
+	 */
+	private void F_delete(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		/*Get session*/
+		User var_user_session = (User) req.getSession().getAttribute(User.SESSION_ATTRIBUTE);
+		int var_int_name = Integer.parseInt(req.getParameter("ticket_name"));
+		try {
+			MysqlSrv var_MysqlSrv_instance = MysqlSrv.F_getInstance(var_user_session.user_bdd);
+			var_MysqlSrv_instance.F_getTicket().F_DeleteTicket(var_int_name);
+			JSONObject result = new JSONObject()
+					.put("code", "1").put("message","");
+			res.getWriter().write(result.toString());
+			
+		} catch (Exception e) {
+			JSONObject result = new JSONObject()
+					.put("code", "-1").put("message","Erreur dans la suppression");
+			res.getWriter().write(result.toString());
+		}
+		
+	}
+
+	/**
+	 * Post add ticket
+	 * @param req
+	 * @param res
+	 * @throws IOException
+	 */
 	private void F_add(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		/*Get session*/
 		User var_user_session = (User) req.getSession().getAttribute(User.SESSION_ATTRIBUTE);
 		String var_string_name = req.getParameter("ticket_name");
 		String var_string_description = req.getParameter("ticket_description");
