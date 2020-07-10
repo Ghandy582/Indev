@@ -77,22 +77,26 @@
     $(document).ready( function () 
 	{
     	$('#tickets').DataTable();
-	} );
+	});
 
 	document.querySelector("#ajouter").addEventListener("click", function()
 	{
 	   	document.querySelector("#container").style.display = "block";
 	});
 	    	
-</script> 
-<script>
-function deconnexion(){
-    $.ajax({
+
+	function deconnexion(){
+   		$.ajax({
           method: "POST",
           url: "${pageContext.request.contextPath}/login",
           data: {'action':'logout'},
+          success : function(res){
+        	  if(res["code"]==1){
+					 window.location.href  = "${pageContext.request.contextPath}/login";						
+				}	
           }
-    });
+        });
+    }
 </script>
 <c:forEach  var="sub_view" items="${sub_views}">
 	<jsp:include page="${sub_view}"/> 

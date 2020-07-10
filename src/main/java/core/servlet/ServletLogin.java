@@ -54,9 +54,10 @@ public class ServletLogin extends HttpServlet {
 		try {
 			switch (var_string_action) {
 				case "login": 
-					login(request, response);
+					F_login(request, response);
 					break;
 				case "logout":
+					F_logout(request, response);
 					break;
 				default:
 					break;
@@ -66,7 +67,20 @@ public class ServletLogin extends HttpServlet {
 		}
 	}
 	
-	private void login(HttpServletRequest req, HttpServletResponse res) {
+	private void F_logout(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			JSONObject result = new JSONObject()
+					.put("code", "1").put("message","");
+			/*Delete session*/
+			req.getSession().setAttribute(User.SESSION_ATTRIBUTE, null);
+			res.getWriter().write(result.toString());
+		} catch (Exception e) {
+			
+		}
+		
+	}
+
+	private void F_login(HttpServletRequest req, HttpServletResponse res) {
 		String var_string_login = req.getParameter("login");
 		String var_string_pass = req.getParameter("password");
 		String var_string_env = req.getParameter("choixbdd");
@@ -78,6 +92,7 @@ public class ServletLogin extends HttpServlet {
 			var_user_u = var_MysqlSrv_instance.F_getUser().F_login(var_string_login, var_string_pass, var_string_env);
 			var_user_u.user_bdd = var_string_env;
 			if (var_user_u != null) {
+				/*Create session*/
 				req.getSession().setAttribute(User.SESSION_ATTRIBUTE, var_user_u);
 				JSONObject result = new JSONObject()
 						.put("code", "1").put("message","");
