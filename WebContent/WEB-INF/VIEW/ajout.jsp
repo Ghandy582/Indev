@@ -47,6 +47,9 @@
                   success : function(data){
                 	  if(data.Erreurs == undefined){
                 		  document.querySelector("#container").style.display = "none";
+                		  setTimeout(function(){
+                              window.location.reload();
+                          },100);
  					 }else{
  						 console.log(res["message"]); 
  					

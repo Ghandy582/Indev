@@ -128,7 +128,7 @@
 			  				  success : function(data){
 			  					  //si aucune erreur
 			  					  if(data.Erreurs === undefined ){
-			  			               // window.location.href  = "${pageContext.request.contextPath}/lobby";
+			  			               window.location.href  = "${pageContext.request.contextPath}/lobby";
 			  					  }
 			  					  else{
 			  						  //on affiches les erreurs

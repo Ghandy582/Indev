@@ -32,6 +32,7 @@
         </div>
         <script>
       function connexion(){
+    	  
             $.ajax({
                   method: "POST",
                   url: "${pageContext.request.contextPath}/login",
