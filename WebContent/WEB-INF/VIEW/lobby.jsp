@@ -74,7 +74,7 @@
 	
 </div>
 <script>
-$(document).ready( function () 
+    $(document).ready( function () 
 	{
     	$('#tickets').DataTable();
 	} );
@@ -83,17 +83,17 @@ $(document).ready( function ()
 	{
 	   	document.querySelector("#container").style.display = "block";
 	});
-	    
-	function deconnexion(){
-        $.ajax({
-              method: "POST",
-              url: "${pageContext.request.contextPath}/login",
-              data: {'action':'logout'},
-              }
-        });
-    }
-	
+	    	
 </script> 
+<script>
+function deconnexion(){
+    $.ajax({
+          method: "POST",
+          url: "${pageContext.request.contextPath}/login",
+          data: {'action':'logout'},
+          }
+    });
+</script>
 <c:forEach  var="sub_view" items="${sub_views}">
 	<jsp:include page="${sub_view}"/> 
 </c:forEach>
