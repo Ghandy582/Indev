@@ -95,7 +95,7 @@ public class ServletLobby extends HttpServlet {
 	private void F_delete(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		/*Get session*/
 		User var_user_session = (User) req.getSession().getAttribute(User.SESSION_ATTRIBUTE);
-		int var_int_name = Integer.parseInt(req.getParameter("ticket_name"));
+		int var_int_name = Integer.parseInt(req.getParameter("id_ticket"));
 		try {
 			MysqlSrv var_MysqlSrv_instance = MysqlSrv.F_getInstance(var_user_session.user_bdd);
 			var_MysqlSrv_instance.F_getTicket().F_DeleteTicket(var_int_name);

@@ -122,7 +122,7 @@
 			  				  method: "POST",
 			  				  url: "${pageContext.request.contextPath}/lobby",				  
 			  				  data: {'id_ticket':id,
-			  					  'fonction':"supprimer"
+			  					  'action':'supprimer'
 			  				  },
 			  				  //Succ�s de la requete ajax et reponse correcte
 			  				  success : function(data){
