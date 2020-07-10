@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import core.beans.Priorite;
 import core.beans.Ticket;
 import core.beans.Type;
@@ -62,8 +64,39 @@ public class ServletLobby extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String var_string_action = request.getParameter("action");
+		try {
+			switch (var_string_action) {
+				case "ajout": 
+					F_add(request, response);
+					break;
+				default:
+					break;
+			}
+		} catch (Exception e) {
+			
+		}
+	}
+	
+	private void F_add(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		User var_user_session = (User) req.getSession().getAttribute(User.SESSION_ATTRIBUTE);
+		String var_string_name = req.getParameter("ticket_name");
+		String var_string_description = req.getParameter("ticket_description");
+		int var_int_types = Integer.parseInt(req.getParameter("types"));
+		int var_int_priorites = Integer.parseInt(req.getParameter("priorites"));
+		try {
+			MysqlSrv var_MysqlSrv_instance = MysqlSrv.F_getInstance(var_user_session.user_bdd);
+			var_MysqlSrv_instance.F_getTicket().F_AddTicket(var_string_name, var_string_description, var_int_types, var_int_priorites, var_user_session);
+			JSONObject result = new JSONObject()
+					.put("code", "1").put("message","");
+			res.getWriter().write(result.toString());
+			
+		} catch (Exception e) {
+			JSONObject result = new JSONObject()
+					.put("code", "-1").put("message","Erreur dans l'ajout");
+			res.getWriter().write(result.toString());
+		}
+		
 	}
 
 }

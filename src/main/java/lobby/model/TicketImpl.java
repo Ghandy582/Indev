@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import core.beans.Ticket;
+import core.beans.User;
 import core.utils.MysqlSrvImpl;
 
 public class TicketImpl extends MysqlSrvImpl implements Iticket{
@@ -20,12 +21,17 @@ public class TicketImpl extends MysqlSrvImpl implements Iticket{
 			+ "INNER JOIN Type Ty on Ti.type_id = Ty.type_id "
 			+ "INNER JOIN Etat Et on Ti.etat_id = Et.etat_id "
 			+ "INNER JOIN Priorite Pr on Ti.priorite_id = Pr.priorite_id";
+	private static final String VAR_STRING_QUERY_INSERT ="insert into indev_dev.Ticket (ticket_nom, ticket_description, ticket_date_ouverture, user_id, type_id, etat_id, user_id_modifier, priorite_id) \r\n" + 
+			"VALUES (?, ?, NOW(), ?, ?, 1, 17, ?)";
 
 	public List<Ticket> F_GetAllTicket() {
+		/*Variables*/
 		List<Ticket> var_list_loaded = new ArrayList<>();
 		ResultSet var_rs = null;
 		try {
+			/*Connection SQL*/
 			con = var_MysqlSrv_daos.getConnection();
+			/*Request Ticket*/
 			stmt = buildRequest(con,VAR_STRING_QUERY_ALL);
 			var_rs = stmt.executeQuery();
 			while(var_rs.next()) {
@@ -49,5 +55,24 @@ public class TicketImpl extends MysqlSrvImpl implements Iticket{
 		}
 		return var_list_loaded;
 	}
+
+
+	@Override
+	public void F_AddTicket(String var_string_name, String var_string_description, int var_int_types,
+			int var_int_priorites, User user) {
+		try {
+			/*Connection SQL*/
+			con = var_MysqlSrv_daos.getConnection();
+			/*Request Ticket*/
+			stmt = buildRequest(con,VAR_STRING_QUERY_INSERT,var_string_name,var_string_description,user.getUser_id(),var_int_types,var_int_priorites);
+			stmt.executeUpdate();
+			con.close();
+
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+	}
+	
 	
 }
